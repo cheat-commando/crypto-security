@@ -1,3 +1,12 @@
+const plainText = document.querySelector("#plaintext")
+const cipherText = document.querySelector("#ciphertext")
+const plainkey = document.querySelector("#encryptkey")
+const decryptkey = document.querySelector("#decryptkey")
+const encryptButton = document.querySelector("#encryptButton")
+const decryptButton = document.querySelector("#decryptButton")
+const encryptText = document.querySelector("#encrypt")
+const decryptText = document.querySelector("#decrypt")
+
 function encrypt(plaintext, key) {
     let text = plaintext
     const consonants = key.match(/[^aeiou]/gi).length;
@@ -11,10 +20,11 @@ function encrypt(plaintext, key) {
         text = cryptArr.join('');
     }
     console.log(text);
-    return text;
+    encryptText.textContent = text
+    plainText.value = ""
+    plainkey.value = ""
 }
 
-let ciphertext = encrypt("I once loved a feathered goose. It had such a marvelous head of plummage atop its neck.",'mackerel');
 
 function decrypt(ciphertext, key) {
     let text = ciphertext
@@ -31,8 +41,19 @@ function decrypt(ciphertext, key) {
         text = decryptArr.join('');
     }
     console.log(text)
-    return text;
+    decryptText.textContent = text;
+    cipherText.value = ""
+    decryptkey.value = ""
 }
 
-decrypt(ciphertext, 'mackerel')
+const enc = () => {
+    encrypt(plaintext.value, plainkey.value)
+}
+encryptButton.addEventListener('click', () => {
+    encrypt(plaintext.value, plainkey.value)
+})
+
+decryptButton.addEventListener('click', () => {
+    decrypt(ciphertext.value, decryptkey.value)
+})
 
