@@ -20,7 +20,7 @@ function encrypt(plaintext, key) {
         text = cryptArr.join('');
     }
     console.log(text);
-    encryptText.textContent = `This is your encoded message: "${text}"`
+    encryptText.textContent = text
     plainText.value = ""
     plainkey.value = ""
 }
