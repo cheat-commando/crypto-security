@@ -20,7 +20,7 @@ function encrypt(plaintext, key) {
         text = cryptArr.join('');
     }
     console.log(text);
-    encryptText.textContent = text
+    encryptText.textContent = `This is your encoded message: "${text}"`
     plainText.value = ""
     plainkey.value = ""
 }
@@ -34,6 +34,7 @@ function decrypt(ciphertext, key) {
     for (let i = 0; i < consonants; i++) {
         const decryptArr = [];
         decryptArr.push(text.slice(0,remainder));
+        console.log(text.slice(0,remainder));
         for (let j = remainder; j < text.length; j += vowels) {
             decryptArr.push(text.slice(j, j + vowels));
         }
